@@ -1,0 +1,11 @@
+node_modules/
+dist/
+dist_electron/
+.env
+*.log
+.DS_Store
+storage/*.sqlite
+storage/*.sqlite-journal
+apps/client/dist/
+apps/server/node_modules/
+apps/client/node_modules/

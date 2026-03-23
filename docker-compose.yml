@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=production
+      - JWT_SECRET=change_me_to_something_secure
+    volumes:
+      - ./data:/app/server/data
+      - ./temp/uploads:/app/temp/uploads
+    restart: always

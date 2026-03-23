@@ -1,0 +1,23 @@
+{
+    "name": "tracelink-server",
+    "version": "1.0.0",
+    "description": "TraceLink AI Suite Backend API",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js",
+        "dev": "node --watch index.js"
+    },
+    "dependencies": {
+        "bcryptjs": "^3.0.3",
+        "better-sqlite3": "^12.8.0",
+        "cors": "^2.8.5",
+        "dotenv": "^16.4.7",
+        "express": "^4.21.2",
+        "form-data": "^4.0.5",
+        "jsonwebtoken": "^9.0.3",
+        "multer": "^1.4.5-lts.1",
+        "node-fetch": "^2.7.0",
+        "uuid": "^11.1.0",
+        "xlsx": "^0.18.5"
+    }
+}

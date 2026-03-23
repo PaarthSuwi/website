@@ -1,0 +1,76 @@
+{
+  "name": "tracelink-ai-suite",
+  "version": "1.0.0",
+  "description": "TraceLink AI Suite — Pharmaceutical Supply Chain Intelligence",
+  "main": "apps/desktop/main.js",
+  "author": "Antigravity",
+  "scripts": {
+    "start": "electron .",
+    "dev": "concurrently \"cd apps/server && node index.js\" \"cd apps/client && npm run dev\" \"wait-on http://localhost:3000 && .\\node_modules\\electron\\dist\\electron.exe .\"",
+    "build:client": "cd apps/client && npm run build",
+    "dist": "npm run build:client && electron-builder",
+    "platform": "concurrently \"cd apps/server && node index.js\" \"cd apps/client && npm run dev\"",
+    "platform:build": "npm run build:client && cd apps/server && node index.js",
+    "test": "node tests/api.test.js",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "build": {
+    "appId": "com.tracelink.ai.suite",
+    "productName": "TraceLink AI Suite",
+    "copyright": "Copyright © 2026",
+    "win": {
+      "target": "nsis"
+    },
+    "forceCodeSigning": false,
+    "directories": {
+      "output": "dist_electron"
+    },
+    "files": [
+      "main.js",
+      "assets/**/*",
+      "client/dist/**/*",
+      "server/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "server",
+        "to": "server",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "asar": true,
+    "asarUnpack": [
+      "server/**/*",
+      "client/dist/**/*"
+    ],
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "runAfterFinish": true,
+      "shortcutName": "TraceLink AI Suite"
+    }
+  },
+  "devDependencies": {
+    "@electron/rebuild": "^3.7.1",
+    "concurrently": "^9.1.2",
+    "electron": "34.1.0",
+    "electron-builder": "^25.1.8",
+    "form-data": "^4.0.5",
+    "node-fetch": "^2.7.0",
+    "wait-on": "^8.0.2"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.8.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "multer": "^1.4.5-lts.1",
+    "uuid": "^11.1.0",
+    "xlsx": "^0.18.5"
+  }
+}
